@@ -1,0 +1,21 @@
+
+
+mydata<-data.frame(bodyfat)
+
+library(lessR)
+
+str(mydata)
+head(mydata)
+names(mydata)
+
+
+Plot(Age,percent_BF,auto=TRUE)
+Plot(Weight,percent_BF, data=mydata, auto=TRUE)
+Plot(ab_cir, percent_BF, auto=FALSE)
+
+Histogram(Age,auto=TRUE)
+Histogram(mydata)
+
+BoxPlot(Age,data=mydata) 
+
+SummaryStats(mydata)

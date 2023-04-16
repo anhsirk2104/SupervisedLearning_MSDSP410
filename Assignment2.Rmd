@@ -1,0 +1,61 @@
+---
+title: "Assignment2"
+output: html_document
+date: "2023-04-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE) 
+```
+
+## R Markdown
+
+```{r analysis_setup1, message = FALSE, warning = FALSE}
+
+# 1) Load/attach the following packages via library():  
+# NOTE:  packages must be installed via install.packages() before they can be loaded.
+
+#install.packages("zoo")
+#install.packages("aTSA")
+#install.packages("tseries")
+#install.packages("forecast")
+#install.packages("lubridate")
+
+
+library(dplyr)
+#library(flux)
+library(ggplot2)
+library(gridExtra)
+library(knitr)
+#library(rockchalk)
+library(tidyverse)
+library(data.table)
+#library(utils)
+library(DataExplorer)
+library(scales)
+library(zoo)
+library(aTSA)
+library(tseries)
+library(forecast)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+us_data <- read.csv("USStates.csv", sep = ",", stringsAsFactors = TRUE, na.strings = "", fileEncoding = "UTF-8-BOM")
+```
+
+***Exploratory Data Analysis Using Data Explorer Package***
+
+```{r Q_1, EDA Using DataExplorer, echo=FALSE, warning=FALSE}
+
+create_report(data=us_data, output_file = "EDA_States.html", output_dir = 'data/', report_title = "Data Profiling Report using DataExplorer Package", )
+htmltools::includeHTML("data/EDA_States.html")
+
+```
+
+```{r Q_1, Correlation Using DataExplorer, echo=FALSE, warning=FALSE}
+plot_correlation(na.omit(us_data), type = "c", maxcat = 5L)
+```
